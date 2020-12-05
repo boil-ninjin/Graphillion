@@ -1,3 +1,4 @@
+#チュートリアルの写経
 from graphillion import GraphSet
 import graphillion.tutorial as tl  # チュートリアルのためのヘルパー・モジュール
 

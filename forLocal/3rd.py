@@ -1,3 +1,4 @@
+#4thの準備に手を動かしただけ
 from graphillion import GraphSet
 import graphillion.tutorial as tl 
 import tree_univ
