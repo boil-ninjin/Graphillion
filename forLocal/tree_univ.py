@@ -40,31 +40,8 @@ class MakeUniverse:
 
 class DrawGraph:
     # 頂点数nのグラフを表示する．
-    # universeを表示したいときはnに各グラフの頂点数を入れること
-    def graph(self, g, n=None, universe=None):
-        if not isinstance(g, nx.Graph):
-            g = nx.Graph(list(g))
-        if n is None:
-            n = len(g)
-        if universe is None:
-            universe = GraphSet.universe()
-            #GraphSetクラスのuniverseタイプで要素が空のものとした．
-        if not isinstance(universe, nx.Graph):
-            universe = nx.Graph(list(universe))
-        #ここまでで (g, universe) ともにnx.graphで定まった．
-        
-        m = n-1
-        pos = {}
-        #position: optional {'vartex':(x, y)}
-        pos[0] = (-1, 0)
-        for v in range(1, m**2):
-            pos[v] = ((v-1) // m, (v-1) % m)
-        nx.draw(g, pos)
-        plt.show()
-
-
     # かつてあった関数”graph”の一般化
-    def graph_wtd(self, g, wtd=None, n=None, universe=None):
+    def graph(self, g, wtd=None, n=None, universe=None):
         if not isinstance(g, nx.Graph):
             g = nx.Graph(list(g))
         if n is None:

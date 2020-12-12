@@ -1,3 +1,22 @@
+'''
+tag class化以降で 互換性なくなった
+具体的には
+・関数をクラスに分けました
+import tree_univ as tu
+↓
+from tree_univ import MakeUniverse, DrawGraph
+・関数を統一しました
+func graph とその一般化func graph_wtd があったが，前者を消して後者の名前をgraphとした．
+'''
+
+
+
+
+
+
+
+
+
 #4thの準備に手を動かしただけ
 from graphillion import GraphSet
 import graphillion.tutorial as tl 

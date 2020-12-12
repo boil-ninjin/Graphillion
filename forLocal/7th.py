@@ -13,8 +13,8 @@ g = [(0, 1), (0, 2), (0, 7), (1, 9), (1, 10), (9, 17), (10, 17)]
 GraphSet.set_universe(universe)
 
 draw = DrawGraph()
-draw.graph_wtd(universe, n=8)
-draw.graph_wtd(g, wtd, n=8)
+draw.graph(universe, n=8)
+draw.graph(g, wtd, n=8)
 
 
 

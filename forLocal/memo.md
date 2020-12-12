@@ -57,3 +57,7 @@ nx.Graph型はdictのlistだけど，Graphクラス内の関数\_\_iter\_\_に�
 
 一方で graph[n] は\{頂点nと辺で結ばれている頂点x: \{\} \} というdictで与えられる．
 
+# tag "class化"について
+tag class化以降で 互換性なくなった
+具体的には5th.pyとかに書いてある．
+

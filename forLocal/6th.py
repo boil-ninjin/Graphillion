@@ -16,8 +16,8 @@ def writelist(list, path):
 n = 8
 universe = MakeUniverse().tree_univ(n)
 GraphSet.set_universe(universe)
-# draw1 = Drawgraph()
-# draw1.graph_wtd(universe, 8, universe=universe)
+# draw = Drawgraph()
+# draw.graph(universe, 8, universe=universe)
 
 tree = GraphSet.trees(root=0, is_spanning=False)
 gs = tree.len(8-1)
