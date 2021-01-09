@@ -22,7 +22,7 @@ from graphillion import GraphSet
 import graphillion.tutorial as tl 
 import tree_univ
 
-universe = tree_univ.tree_univ(8)
+universe = tree_univ.MakeUniverse().tree_univ(8)
 GraphSet.set_universe(universe)
 
 tree = GraphSet.trees(root=0, is_spanning=False)
@@ -31,9 +31,13 @@ gs = gs.including(1)
 
 print(len(gs))
 
+draw = tree_univ.DrawGraph()
+draw.graph(gs.choice(), n=8)
+
+'''
 tree_univ.graph(gs.choice(), universe=universe)
 #tree_univ.graph_univ(universe, 8, universe=universe)
-'''
+
 # 頂点nを含むgraph全体がなすsubGraphSetを第n成分とするリスト
 def subset():
 

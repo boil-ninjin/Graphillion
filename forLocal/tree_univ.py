@@ -27,12 +27,48 @@ class MakeUniverse:
         g = nx.Graph()
         edge = []
         for k in range(1, n): #根からの辺
-            edge.append((0, k, k))
+            edge.append((0, k, [0, 0, k]))
         for i in range(m): #深さ
             for j in range(math.ceil((m-i)/2)): #右に辺が伸びる頂点
                 for k in range(1, n-i-2*j-1): #辺
                     #座標(i,j)の点はi(n-1)+j+1で与えられる
-                    edge.append((i*m+j+1, (i+1)*m+j+k, k))
+                    edge.append((i*m+j+1, (i+1)*m+j+k, [i+1, j, k]))
+        g.add_weighted_edges_from(edge)
+        edge_labels = {(i, j): w['weight'] for i, j, w in g.edges(data=True)}
+        return g.edges(), edge_labels
+
+
+    # tree_univ の深さk から k+1 への辺のみがなす部分集合
+    def tree_edge(self, n, i):
+        m = n-1
+        edges = []
+        if i == 0:
+            for k in range(1, n): #根からの辺
+                edges.append((0, k))
+        else: # もとのtree_univ ではi は0 から始まるのでi=i-1 とする
+            i = i-1
+            for j in range(math.ceil((m-i)/2)): #右に辺が伸びる頂点
+                for k in range(1, n-i-2*j-1): #辺
+                    #座標(i,j)の点はi(n-1)+j+1で与えられる
+                    edges.append((i*m+j+1, (i+1)*m+j+k)) 
+        g = nx.Graph(edges)
+        return g.edges()
+
+
+    # （必要あるかはわからんけど）上の重み付きver
+    def te_wtd(self, n, i):
+        m = n-1
+        g = nx.Graph()
+        edge = []
+        if i == 0:
+            for k in range(1, n): #根からの辺
+                edge.append((0, k, [0, 0, k]))
+        else: # もとのtree_univ ではi は0 から始まるのでi=i-1 とする
+            i = i-1
+            for j in range(math.ceil((m-i)/2)): #右に辺が伸びる頂点
+                for k in range(1, n-i-2*j-1): #辺
+                    #座標(i,j)の点はi(n-1)+j+1で与えられる
+                    edge.append((i*m+j+1, (i+1)*m+j+k, [i+1, j, k]))
         g.add_weighted_edges_from(edge)
         edge_labels = {(i, j): w['weight'] for i, j, w in g.edges(data=True)}
         return g.edges(), edge_labels
@@ -70,6 +106,15 @@ class DrawGraph:
 
 
 class OperationtoTrees:
+    # 頂点nを含むgraph全体がなすsubGraphSetを作る
+    def subset(self, gs, n, universe=None):
+        if universe is None:
+            universe = GraphSet.universe()
+        return gs.including(n)  
+
+
+
+
     # 頂点nを含むgraph全体がなすsubGraphSetを第n成分とするリストを作る
     def subsets(self, univ, gs):
         subsets = [univ, gs]

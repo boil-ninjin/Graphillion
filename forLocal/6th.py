@@ -1,4 +1,4 @@
-# list化すれば表示できるようになった！
+# list化すればメモ帳に表示できるようになった！
 # 重みづけすればイテレーションで同値類消せる気がするから7thで検証する
 from graphillion import GraphSet
 import graphillion.tutorial as tl 
@@ -16,8 +16,6 @@ def writelist(list, path):
 n = 8
 universe = MakeUniverse().tree_univ(n)
 GraphSet.set_universe(universe)
-# draw = Drawgraph()
-# draw.graph(universe, 8, universe=universe)
 
 tree = GraphSet.trees(root=0, is_spanning=False)
 gs = tree.len(8-1)
