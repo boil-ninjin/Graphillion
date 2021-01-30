@@ -20,7 +20,6 @@ draw.graph(g, wtd, n=8)
 
 
 
-
 '''
 subsets = tu.subsets(universe, gs)
 subsets_list = [sorted(list(x)) for x in subsets]

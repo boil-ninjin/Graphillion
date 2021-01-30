@@ -13,6 +13,7 @@ GraphSet.set_universe(wtd_tree)
 tree = GraphSet.trees(root=0, is_spanning=False)
 gs = tree.len(n-1)
 
+
 '''
 # 適当に制約を付けてchoice() で一つ選ぶ
 gs1 = gs.including((1, 9))
@@ -21,12 +22,12 @@ g = gs1.choice()
 draw = DrawGraph()
 draw.graph(g, wtd, n=8)
 '''
-
+'''
 for k in range(8-1):
     [edge_k, wtd_k] = MakeUniverse().te_wtd(8, k)
 
     print(len(edge_k))
     draw = DrawGraph()
     draw.graph(edge_k, wtd_k, n=8)
-
+'''
 
