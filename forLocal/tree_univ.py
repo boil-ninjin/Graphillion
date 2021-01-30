@@ -41,22 +41,19 @@ class ChangeCoordandSerial:
 
 
     # 座標番号 → 通し番号(辺)
-    def CoordtoSerial(self, g, n=None):
-        if not isinstance(g, nx.Graph):
-            g = nx.Graph(list(g))
+    def CoordtoSerial(self, g, n=None): # 座標番号はlistで与えてください．
         if n is None:
             n = len(g)
         
         m = n-1
         gserial = []
-        for edge in g.edges():
-            (i, j) = (edge[0], edge[1])
-            e = sorted((i, j))
+        for edge in g:
+            (i, j) = sorted((edge[0], edge[1]))
 
-            if -1 in e[0]:
-                gserial.append((0, j[0]*m+j[1]+1))
+            if -1 in i:
+                gserial.append((0, j[0]*m + j[1] + 1))
             else:
-                gserial.append((i[0]*m+i[1]+1, j[0]*m+j[1]+1))
+                gserial.append((i[0]*m + i[1] + 1, j[0]*m + j[1] + 1))
         gSerial = nx.Graph(gserial)
         return gSerial.edges()
 
