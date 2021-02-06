@@ -1,5 +1,4 @@
 from graphillion import GraphSet
-import graphillion.tutorial as tl 
 import networkx as nx
 from tree_univ import ChangeCoordandSerial,MakeUniverse, DrawGraph, OperationtoTrees
 

@@ -3,60 +3,7 @@ import math
 from graphillion import GraphSet
 import networkx as nx
 import matplotlib.pyplot as plt
-
-
-class ChangeCoordandSerial:
-    # 通し番号 → 座標番号(頂点)
-    def Node_SerialtoCoord(self, g, n=None):
-            # if not isinstance(g, nx.Graph):
-            # g = nx.Graph(list(g))
-        if n is None:
-            n = len(g)
-
-        m = n-1
-        gcoord = []
-        for v in g:
-            gcoord.append(((v-1) // m, (v-1) % m))
-        gcoord[0] = (-1, 0)
-        return gcoord # listで返します．
-
-
-    # 通し番号 → 座標番号(辺)
-    def SerialtoCoord(self, g, n=None):
-        if not isinstance(g, nx.Graph):
-            g = nx.Graph(list(g))
-        if n is None:
-            n = len(g)
-        
-        m = n-1
-        gcoord = []
-        for edge in g.edges():
-            e = sorted(edge)
-            if e[0] == 0:
-                gcoord.append(((-1, 0), ((e[1]-1) // m, (e[1]-1) % m)))
-            else:
-                gcoord.append((((e[0]-1) // m, (e[0]-1) % m), ((e[1]-1) // m, (e[1]-1) % m)))
-        gCoord = nx.Graph(gcoord)
-        return gCoord.edges()
-
-
-    # 座標番号 → 通し番号(辺)
-    def CoordtoSerial(self, g, n=None): # 座標番号はlistで与えてください．
-        if n is None:
-            n = len(g)
-        
-        m = n-1
-        gserial = []
-        for edge in g:
-            (i, j) = sorted((edge[0], edge[1]))
-
-            if -1 in i:
-                gserial.append((0, j[0]*m + j[1] + 1))
-            else:
-                gserial.append((i[0]*m + i[1] + 1, j[0]*m + j[1] + 1))
-        gSerial = nx.Graph(gserial)
-        return gSerial.edges()
-
+from ChangeCoord import ChangeCoordandSerial
 
 
 class MakeUniverse:
