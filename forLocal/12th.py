@@ -16,7 +16,7 @@ G1 = nx.Graph(g)
 H1 = nx.Graph(h)
 
 c = CanonicalName()
-#print(c.leaf(G1))
+print(c.leaf(G1))
 print(c.leaf(H1))
 print(c.recuring(G1, 1))
 print(c.recuring(H1, 1))

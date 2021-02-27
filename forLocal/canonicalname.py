@@ -27,7 +27,7 @@ class CanonicalName:
     # 再帰関数(頂点k を根とする木Gの個有名)
     def recuring(self, G, k):
         if k in self.leaf(G):
-            return (0)
+            return "(0)"
         
         subtree = self.subtree(G, k)
         neighbors = [i for i in subtree if subtree.has_edge(k, i)] # kとつながっている頂点
