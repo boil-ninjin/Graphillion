@@ -100,10 +100,18 @@ class DrawGraph:
         if wtd is None:
             pass
         else:
+            label = {}
+            for s in g.edges():
+                t = tuple(sorted(s)) # 辺が逆順で入力されてもソートできる
+                label[t] = wtd[t]
+            nx.draw_networkx_edge_labels(g, pos, edge_labels=label)
+
+        plt.show()
+'''
+        else:
             label = {s: wtd[s] for s in g.edges()}
             nx.draw_networkx_edge_labels(g, pos, edge_labels=label)
-        
-        plt.show()
+'''
 
 
 class OperationtoTrees:
